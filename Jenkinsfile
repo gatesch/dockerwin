@@ -12,7 +12,7 @@ node('master') {
         bat 'docker login -u admin -p redhat12  dtr.example.local && docker push dtr.example.local/admin/windows:latest'
     }
 
-    try {
+    try {   //  remove the service if it already exists, if it doesn't exists it will continue
           stage('Destroy') {
                 bat 'env.cmd && docker service rm dockerwin' }
     }
